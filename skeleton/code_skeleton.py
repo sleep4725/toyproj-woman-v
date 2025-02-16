@@ -2,14 +2,14 @@ from abc import ABC, abstractmethod
 
 '''
 '''
-class CodeSkeleton:
+class CodeSkeleton(ABC):
     
     @abstractmethod
     def set_config_file_path(self):
         pass
     
     @abstractmethod
-    def get_detail_info_from_html(self):
+    def get_detail_info_from_html(self, bs_obj):
         pass
     
     @abstractmethod

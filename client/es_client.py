@@ -6,7 +6,7 @@ sys.path.append(PROJ_ROOT_PATH.__str__())
 from typing import Dict, Any, Optional, List
 from elasticsearch import Elasticsearch as ES
 import warnings
-from elasticsearch import ElasticsearchWarning
+from elasticsearch.exceptions import ElasticsearchWarning
 warnings.simplefilter('ignore', ElasticsearchWarning)
 from elasticsearch.exceptions import ConnectionTimeout, ConnectionError
 from urllib3.exceptions import NewConnectionError

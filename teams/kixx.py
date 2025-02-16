@@ -28,7 +28,7 @@ class Kixx(CodeSkeleton):
     
     TEAM_NAME = "kixx"
     def __init__(self):
-        self.config :str= Kixx.set_config_file_path()
+        self.config :Dict[str, Any]= Kixx.set_config_file_path()
         self.img_file_path :str= PROJ_ROOT_PATH.joinpath(f'img/{Kixx.TEAM_NAME}').__str__()
         self.players :Optional[List[Dict[str, Dict[str, str]]]]= []
         self.birthday_format :str= r"(\d{4})년 (\d{2})월 (\d{2})일"
@@ -120,7 +120,7 @@ class Kixx(CodeSkeleton):
                     )
                     if not self.check_requests_status(response): pass
                     bs_obj = BeautifulSoup(response.text, "html.parser")
-                    
+                    print(f"*************** type(bs_obj) -> {type(bs_obj)}")
                     self.es_actions.append({
                         "_index": self.es_index,
                         "_id": f"{Kixx.TEAM_NAME}_{i + 1}",
@@ -137,7 +137,7 @@ class Kixx(CodeSkeleton):
         '''
         EsService.do_bulk_insert(es_client= self.es_client, actions= self.es_actions)
   
-    def get_detail_info_from_html(self, bs_obj: BeautifulSoup)-> Dict[str, Any]:
+    def get_detail_info_from_html(self, bs_obj:BeautifulSoup)-> Dict[str, Any]:
         '''
         :param bs_obj:
         :return:
@@ -173,7 +173,7 @@ class Kixx(CodeSkeleton):
         result :Dict[str, Any]= asdict(women_player)
         return result
      
-    def get_data_tdi_1(self, t_detail_info: BeautifulSoup)-> Dict[str, Any]:
+    def get_data_tdi_1(self, t_detail_info: bs4.element.Tag)-> Dict[str, Any]:
         '''
         :param t_detail_info:
         :return:
@@ -201,7 +201,7 @@ class Kixx(CodeSkeleton):
         
         return p
          
-    def get_data_tdi_2(self, t_detail_info: BeautifulSoup)-> Dict[str, Any]:
+    def get_data_tdi_2(self, t_detail_info: bs4.element.Tag)-> Dict[str, Any]:
         '''
         :param t_detail_info:
         :return: 
@@ -213,7 +213,7 @@ class Kixx(CodeSkeleton):
         p["p_player_name"] = player_name
         return p
         
-    def get_data_tdi_3(self, t_detail_info: BeautifulSoup)-> Dict[str, Any]:
+    def get_data_tdi_3(self, t_detail_info: bs4.element.Tag)-> Dict[str, Any]:
         '''
         :param t_detail_info: 
         '''
