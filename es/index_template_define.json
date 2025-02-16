@@ -1,0 +1,44 @@
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 1
+    },
+    "mappings": {
+        "properties": {
+            "team_name": {
+                "type": "keyword"
+            },
+            "name": {
+                "type": "keyword"
+            },
+            "position": {
+                "type": "keyword"
+            },
+            "birthday": {
+                "type": "keyword"
+            },
+            "back_number": {
+                "type": "keyword"
+            },
+            "height": {
+                "type": "long"
+            },
+            "alma_mater": {
+                "properties": {
+                    "primary_school": {
+                        "type": "keyword"
+                    },
+                    "junior_high_school": {
+                        "type": "keyword"
+                    },
+                    "high_school": {
+                        "type": "keyword"
+                    },
+                    "college": {
+                        "type": "keyword"
+                    }
+                }
+            }
+        }
+    }
+}

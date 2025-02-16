@@ -1,0 +1,6 @@
+# author Teddy
+
+schema: "http"
+port: 9200
+hosts:
+  - "127.0.0.1"

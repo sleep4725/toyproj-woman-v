@@ -1,5 +1,8 @@
 from dataclasses import dataclass
 
+'''
+@author Teddy
+'''
 @dataclass
 class MySchool:
     primary_school: str ## 초등학교
@@ -9,6 +12,7 @@ class MySchool:
     
 @dataclass
 class Player:
+    team_name: str
     name: str
     position: str
     back_number: str
